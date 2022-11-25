@@ -1,14 +1,8 @@
 import { createStore } from 'vuex'
+import {globalModule} from "@/store/globalModule";
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
   modules: {
+    globalM : globalModule
   }
 })
