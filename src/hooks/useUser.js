@@ -56,11 +56,11 @@ export function useUser() {
         store.dispatch("checkAuth")
     }
 
-    const checkAdminRole = async (id) =>{
+    const checkAdminRole = async () =>{
         return localStorage.getItem("Login") === 'admin'
     }
 
-    const getLoginByID = async () => {
+    const getLoginByID = async (id) => {
         const response = await axios.get(API_URL + '/users/?id=' + id);
         return response.data[0]
     }
