@@ -8,7 +8,7 @@
 import SideMenu from "@/components/SideMenu";
 import mainSection from "@/components/mainSection";
 import menuButtons from "@/components/menuButtons";
-import $ from 'jquery'
+import $ from 'jquery';
 export default {
   name: "MainPage",
   components:{
