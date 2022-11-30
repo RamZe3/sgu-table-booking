@@ -1,4 +1,5 @@
 <template>
+  <menu-buttons></menu-buttons>
   <side-menu></side-menu>
   <div class="wrapper">
     <div class="main">
@@ -12,8 +13,10 @@
 import SideMenu from "@/components/SideMenu";
 import AdminPanel from "@/components/adminPanel";
 import $ from 'jquery';
+import MenuButtons from "@/components/menuButtons";
 export default {
   components:{
+    MenuButtons,
     AdminPanel,
     SideMenu
   },
@@ -65,5 +68,5 @@ export default {
 </script>
 
 <style scoped>
-
+@import "../assets/css/styles.css";
 </style>

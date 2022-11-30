@@ -1,4 +1,5 @@
 <template>
+  <menu-buttons></menu-buttons>
   <side-menu></side-menu>
   <div class="wrapper">
   <div class="main">
@@ -13,9 +14,11 @@ import SideMenu from "@/components/SideMenu";
 import BookingComponent from "@/components/bookingComponent";
 import FooterComponent from "@/components/mainSectionComponents/footerComponent";
 import $ from "jquery";
+import MenuButtons from "@/components/menuButtons";
 export default {
   name: "BookingPage",
   components: {
+    MenuButtons,
     FooterComponent,
     BookingComponent,
     SideMenu
@@ -71,42 +74,42 @@ export default {
     })
 
 // модал
-    let dcloseBtn = $('.close-btn__date-popup');
-    let dopenBtn = $('.date-popup-open-btn');
-    let dsubmitBtn = $('.submit-btn___date-popup');
-    let dpopupBody = $('.popup-body__date-popup');
-    let dpopup = $('.popup__date-popup');
-
-    $(document).on("click", function(e){
-      if (dcloseBtn.is(e.target)) {
-        dpopup.removeClass('_active');
-      }
-      if (dsubmitBtn.is(e.target) || (dpopupBody.is(e.target))) {
-        dpopup.removeClass('_active');
-      }
-      if (dopenBtn.is(e.target)) {
-        dpopup.addClass('_active');
-      }
-    })
+//     let dcloseBtn = $('.close-btn__date-popup');
+//     let dopenBtn = $('.date-popup-open-btn');
+//     let dsubmitBtn = $('.submit-btn___date-popup');
+//     let dpopupBody = $('.popup-body__date-popup');
+//     let dpopup = $('.popup__date-popup');
+//
+//     $(document).on("click", function(e){
+//       if (dcloseBtn.is(e.target)) {
+//         dpopup.removeClass('_active');
+//       }
+//       if (dsubmitBtn.is(e.target) || (dpopupBody.is(e.target))) {
+//         dpopup.removeClass('_active');
+//       }
+//       if (dopenBtn.is(e.target)) {
+//         dpopup.addClass('_active');
+//       }
+//     })
 
 // модал
-    let tcloseBtn = $('.close-btn__time-popup');
-    let tableBtn = $('.table');
-    let tsubmitBtn = $('.submit-btn___time-popup');
-    let tpopupBody = $('.popup-body__time-popup');
-    let tpopup = $('.popup__time-popup');
-
-    $(document).on("click", function(e){
-      if (tcloseBtn.is(e.target)) {
-        tpopup.removeClass('_active');
-      }
-      if (tsubmitBtn.is(e.target) || (tpopupBody.is(e.target))) {
-        tpopup.removeClass('_active');
-      }
-      if (tableBtn.is(e.target)) {
-        tpopup.addClass('_active');
-      }
-    })
+//     let tcloseBtn = $('.close-btn__time-popup');
+//     let tableBtn = $('.table');
+//     let tsubmitBtn = $('.submit-btn___time-popup');
+//     let tpopupBody = $('.popup-body__time-popup');
+//     let tpopup = $('.popup__time-popup');
+//
+//     $(document).on("click", function(e){
+//       if (tcloseBtn.is(e.target)) {
+//         tpopup.removeClass('_active');
+//       }
+//       if (tsubmitBtn.is(e.target) || (tpopupBody.is(e.target))) {
+//         tpopup.removeClass('_active');
+//       }
+//       if (tableBtn.is(e.target)) {
+//         tpopup.addClass('_active');
+//       }
+//     })
 
   }
 }
