@@ -61,21 +61,21 @@
     </div>
   </div>
 
-  <div id="admin-edit-popup" class="popup popup__admin-edit-popup">
-    <div class="popup-body popup-body__admin-edit-popup">
-      <div class="popup-content">
-        <div class="popup-title">Выберите дату и время визита:</div>
-        <div class="input-form">
-          <input type="date" id="admin-date" class="input-form-date-value" min="2022-11-17" max="2022-12-31">
-          <input type="time" id="admin-time" class="input-form-time-value" min="09:00" max="21:00" required>
-        </div>
-        <div class="popup-сontent-buttons">
-          <button id="close-btn" class="content-button close-btn close-btn__admin-edit-popup">Закрыть</button>
-          <button class="content-button submit-btn submit-btn___admin-edit-popup" type="submit">Подтвердить</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--  <div id="admin-edit-popup" class="popup popup__admin-edit-popup">-->
+<!--    <div class="popup-body popup-body__admin-edit-popup">-->
+<!--      <div class="popup-content">-->
+<!--        <div class="popup-title">Выберите дату и время визита:</div>-->
+<!--        <div class="input-form">-->
+<!--          <input type="date" id="admin-date" class="input-form-date-value" min="2022-11-17" max="2022-12-31">-->
+<!--          <input type="time" id="admin-time" class="input-form-time-value" min="09:00" max="21:00" required>-->
+<!--        </div>-->
+<!--        <div class="popup-сontent-buttons">-->
+<!--          <button id="close-btn" class="content-button close-btn close-btn__admin-edit-popup">Закрыть</button>-->
+<!--          <button class="content-button submit-btn submit-btn___admin-edit-popup" type="submit">Подтвердить</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <!-- <div id="admin-create-popup" class="popup popup__admin-create-popup">
      <div class="popup-body popup-body__admin-create-popup">
@@ -93,24 +93,28 @@
      </div>
   </div>  -->
 
-  <div id="admin-delete-popup" class="popup popup__admin-delete-popup">
-    <div class="popup-body popup-body__admin-delete-popup">
-      <div class="popup-content">
-        <div class="popup-title">Подтвердите удаление бронирования</div>
-        <div class="popup-сontent-buttons">
-          <button id="close-btn" class="content-button close-btn close-btn__admin-delete-popup">Закрыть</button>
-          <button class="content-button submit-btn submit-btn___admin-delete-popup" type="submit">Подтвердить</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<!--  <div id="admin-delete-popup" class="popup popup__admin-delete-popup">-->
+<!--    <div class="popup-body popup-body__admin-delete-popup">-->
+<!--      <div class="popup-content">-->
+<!--        <div class="popup-title">Подтвердите удаление бронирования</div>-->
+<!--        <div class="popup-сontent-buttons">-->
+<!--          <button id="close-btn" class="content-button close-btn close-btn__admin-delete-popup">Закрыть</button>-->
+<!--          <button class="content-button submit-btn submit-btn___admin-delete-popup" type="submit">Подтвердить</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 
   <div id="date-popup" class="popup popup__date-popup">
     <div class="popup-body popup-body__date-popup">
       <div class="popup-content">
         <div class="popup-title">Выберите дату:</div>
         <div class="input-form">
-          <input type="date" id="date" class="input-form-date-value" value="2022-12-20" min="2022-11-17" max="2022-12-31">
+          <input type="date" id="date" class="input-form-date-value"
+                 :value="currentDate.format('YYYY-MM-DD')"
+                 :min="currentDate.format('YYYY-MM-DD')"
+                 :max="maxDate.format('YYYY-MM-DD')"
+                 @input="event => updateCurrentDate(event.target.value, 'YYYY-MM-DD')">
         </div>
         <div class="popup-сontent-buttons">
           <button class="content-button close-btn close-btn__date-popup">Закрыть</button>
@@ -122,8 +126,14 @@
 </template>
 
 <script>
+import {useTableBooks} from "@/hooks/useTableBooks";
+
 export default {
-  name: "adminPanel"
+  name: "adminPanel",
+  setup(){
+    const {currentDate, updateCurrentDate, maxDate} = useTableBooks()
+    return {currentDate, updateCurrentDate, maxDate}
+  }
 }
 </script>
 

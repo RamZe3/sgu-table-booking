@@ -19,6 +19,9 @@ export default {
   },
   name: "AdminPage",
   mounted() {
+    if (!this.$store.getters.ISADMIN){
+      this.$router.push('/')
+    }
     // модал удаления админки
     let dcloseBtn = $('.close-btn__date-popup');
     let dopenBtn = $('.date-popup-open-btn');

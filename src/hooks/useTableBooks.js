@@ -20,6 +20,11 @@ export function useTableBooks() {
     const bookingTables = ref([])
 
     const currentDate = ref(moment())
+    const maxDate = ref(moment().add(14,'days'))
+
+    const updateCurrentDate = (date, form) => {
+        currentDate.value = moment(date, form)
+    }
 
     //Для клиента
     const getTablesByDate = async () => {
@@ -62,7 +67,7 @@ export function useTableBooks() {
 
 
     return {
-        tables, currentDate, bookingTables,
-        getTablesByDate, bookingTable, getBookingTables
+        tables, currentDate, bookingTables, maxDate,
+        getTablesByDate, bookingTable, getBookingTables, updateCurrentDate
     }
 }

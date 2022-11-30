@@ -86,6 +86,33 @@
     border: none;
 }
 
+.base-form-open{
+    color:#c3c3c3;
+    font-size: 20px;
+
+    background-color: transparent;
+    font-family: "Montserrat", sans-serif;
+    transition: 0.2s linear;
+    border: none;
+}
+
+.base-form-open-btn{
+    color:#c3c3c3;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: transparent;
+    font-family: "Montserrat", sans-serif;
+    transition: 0.2s linear;
+    border: none;
+    margin-bottom: 100px;
+}
+
+.base-form-open-btn:hover, .register-form-open-btn:hover{
+    color: white;
+    scale: 1.05;
+    cursor: pointer;
+}
+
 .register-form-open-btn{
     color:#838696;
     font-size: 15px;
@@ -94,6 +121,11 @@
     font-family: "Montserrat", sans-serif;
     transition: 0.15s linear;
     border: none;
+
+}
+
+.side-menu__user-login{
+    margin-bottom: 100px;
 }
 
 .login-form-open-btn:hover, .register-form-open-btn:hover{
@@ -105,6 +137,7 @@
 .side-menu__login-form, .side-menu__register-form{
     display: none;
     margin-top: 10px;
+
 }
 
 .side-menu__register-form-inputs, .side-menu__login-form-inputs {

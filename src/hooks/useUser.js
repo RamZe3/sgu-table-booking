@@ -8,24 +8,28 @@ export function useUser() {
     const user = ref(
         {
             id: '',
-            email: '',
+            phone: '',
             login: '',
             password: '',
         })
 
+    const isAdmin = ref(false)
     const store = useStore()
 
     const login = async () => {
-        const response = await axios.get(API_URL + USER_API_URL + '/?login=' + user.value.login
+        //TODO
+        const response = await axios.get(API_URL + USER_API_URL + '/?phone=' + user.value.phone
             + "&password=" + user.value.password);
 
         if (response.data.length === 1) {
             localStorage.setItem("userID", response.data[0].id)
-            localStorage.setItem("Login", user.value.login)
+            localStorage.setItem("Login", response.data[0].login)
             store.commit("setIsAuth", true)
+            store.commit("setLogin")
         } else {
             store.commit("setErrorMessage", "Неверно указан логин или пароль")
         }
+        checkAdminRole()
     }
 
     const register = async () => {
@@ -34,22 +38,26 @@ export function useUser() {
             localStorage.setItem("userID", user.value.id)
             localStorage.setItem("Login", user.value.login)
             store.commit("setIsAuth", true)
+            store.commit("setLogin")
             const newUser = {
                 id: newGuid(),
                 login: user.value.login,
-                password: user.value.password
+                password: user.value.password,
+                phone: user.value.phone
             }
             await axios.post(API_URL + USER_API_URL + "/", newUser);
             localStorage.setItem("userID", newUser.id)
         } else {
             store.commit("setErrorMessage", "Пользователь с этим логином уже существует")
         }
+        checkAdminRole()
     }
 
     const signOut = () => {
         localStorage.removeItem("userID")
         localStorage.removeItem("Login")
         store.commit("setIsAuth", false)
+        checkAdminRole()
 
     }
 
@@ -57,8 +65,15 @@ export function useUser() {
         store.dispatch("checkAuth")
     }
 
-    const checkAdminRole = async () =>{
-        return localStorage.getItem("Login") === 'admin'
+    const checkAdminRole = () =>{
+
+        if (localStorage.getItem("Login") === 'admin'){
+            isAdmin.value = true
+        }
+        else{
+            isAdmin.value = false
+        }
+        store.commit("setIsAdmin", isAdmin)
     }
 
     const getLoginByID = async (id) => {
@@ -67,11 +82,12 @@ export function useUser() {
     }
 
     onMounted(checkAuth)
+    onMounted(checkAdminRole)
     computed(checkAdminRole)
 
     return {
         register, login, signOut,
         checkAuth, checkAdminRole,
-        getLoginByID
+        getLoginByID, user, isAdmin
     }
 }

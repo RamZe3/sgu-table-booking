@@ -16,7 +16,7 @@
         <div class="nav-link nav-link--contacts pointer" @click="$router.push('/contacts')">контакты</div>
       </div>
       <div class="side-menu__navbar-item">
-        <div class="nav-link nav-link--admin pointer" @click="$router.push('/admin')">админ-панель</div>
+        <div v-show="this.$store.getters.ISADMIN" class="nav-link nav-link--admin pointer" @click="$router.push('/admin')">админ-панель</div>
       </div>
     </div>
   </div>
@@ -26,8 +26,18 @@
 
 
 <script>
+import {useUser} from "@/hooks/useUser";
+
 export default {
-  name: "navBarSideMenu"
+  name: "navBarSideMenu",
+  setup(){
+    const { checkAdminRole, isAdmin } = useUser()
+    return {checkAdminRole, isAdmin}
+  },
+  watch: {
+    isAdmin: function () {
+    }
+  }
 }
 </script>
 

@@ -55,12 +55,141 @@
       </div>
     </div>
   </div>
+
+  <div id="date-popup" class="popup popup__date-popup">
+    <div class="popup-body popup-body__date-popup">
+      <div class="popup-content">
+        <div class="popup-title">Выберите дату:</div>
+        <div class="input-form">
+          <input type="date" id="date" class="input-form-date-value"
+                 :value="currentDate.format('YYYY-MM-DD')"
+                 :min="currentDate.format('YYYY-MM-DD')"
+                 :max="maxDate.format('YYYY-MM-DD')"
+                 @input="event => updateCurrentDate(event.target.value, 'YYYY-MM-DD')">
+        </div>
+        <div class="popup-сontent-buttons">
+          <button class="content-button close-btn close-btn__date-popup">Закрыть</button>
+          <button class="content-button submit-btn submit-btn___date-popup" type="submit">Подтвердить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-edit-popup" class="popup popup__admin-edit-popup">
+    <div class="popup-body popup-body__admin-edit-popup">
+      <div class="popup-content">
+        <div class="popup-title">Выберите дату и время визита:</div>
+        <div class="input-form">
+          <input type="date" id="admin-date" class="input-form-date-value" min="2022-11-17" max="2022-12-31">
+          <input type="time" id="admin-time" class="input-form-time-value" min="09:00" max="21:00" required>
+        </div>
+        <div class="popup-сontent-buttons">
+          <button id="close-btn" class="content-button close-btn close-btn__admin-edit-popup">Закрыть</button>
+          <button class="content-button submit-btn submit-btn___admin-edit-popup" type="submit">Подтвердить</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-
+import $ from 'jquery'
+import {useTableBooks} from "@/hooks/useTableBooks";
 export default {
-  name: "bookingComponent"
+  name: "bookingComponent",
+  setup(){
+    const {currentDate, updateCurrentDate, maxDate} = useTableBooks()
+    return {currentDate, updateCurrentDate, maxDate}
+  },
+  mounted() {
+    let loginBtn = $('.login-form-open-btn');
+    let regBtn = $('.register-form-open-btn');
+
+    $(document).on("click", function(e){
+      console.log(e.target);
+      if(loginBtn.is(e.target)){
+        document.querySelector('.side-menu__login-form').style.display = "flex";
+        document.querySelector('.side-menu__login-form').style.flexDirection = "column";
+        document.querySelector('.side-menu__register-form').style.display = "none"
+      }
+
+      if(regBtn.is(e.target)){
+        document.querySelector('.side-menu__register-form').style.display = "flex";
+        document.querySelector('.side-menu__register-form').style.flexDirection = "column";
+        document.querySelector('.side-menu__login-form').style.display = "none"
+      }
+    })
+
+// бургер:
+
+    let sideMenu = $('.side-menu');
+    let menuButton = $('.menu-button');
+    let menuButtonItem = $('.menu-button-item');
+
+    $(document).on("click", function(e){
+      if ((menuButton.is(e.target) || menuButtonItem.is(e.target)) && !sideMenu.hasClass('_active')) {
+        sideMenu.addClass('_active');
+      }
+      else if (((menuButton.is(e.target) || menuButtonItem.is(e.target)) && sideMenu.hasClass('_active')) || (!(menuButton.is(e.target) || menuButtonItem.is(e.target)) && sideMenu.has(e.target).length === 0 && sideMenu.hasClass('_active'))) {
+        sideMenu.removeClass('_active');
+      }
+    })
+
+// бронь:
+
+    let table = $('.table');
+    let tableId = 0;
+
+    $(document).on("click", function(e2){
+      if (table.is(e2.target)) {
+        tableId = e2.target.id;
+        let element = document.getElementById(tableId);
+        if (element.classList.contains("table__free")) {
+          element.classList.add("table__occupied");
+          element.classList.remove("table__free");
+        }
+      }
+    })
+
+// модал
+    let dcloseBtn = $('.close-btn__date-popup');
+    let dopenBtn = $('.date-popup-open-btn');
+    let dsubmitBtn = $('.submit-btn___date-popup');
+    let dpopupBody = $('.popup-body__date-popup');
+    let dpopup = $('.popup__date-popup');
+
+    $(document).on("click", function(e){
+      if (dcloseBtn.is(e.target)) {
+        dpopup.removeClass('_active');
+      }
+      if (dsubmitBtn.is(e.target) || (dpopupBody.is(e.target))) {
+        dpopup.removeClass('_active');
+      }
+      if (dopenBtn.is(e.target)) {
+        dpopup.addClass('_active');
+      }
+    })
+
+// модал
+    let tcloseBtn = $('.close-btn__time-popup');
+    let tableBtn = $('.table');
+    let tsubmitBtn = $('.submit-btn___time-popup');
+    let tpopupBody = $('.popup-body__time-popup');
+    let tpopup = $('.popup__time-popup');
+
+    $(document).on("click", function(e){
+      if (tcloseBtn.is(e.target)) {
+        tpopup.removeClass('_active');
+      }
+      if (tsubmitBtn.is(e.target) || (tpopupBody.is(e.target))) {
+        tpopup.removeClass('_active');
+      }
+      if (tableBtn.is(e.target)) {
+        tpopup.addClass('_active');
+      }
+    })
+
+  }
 }
 </script>
 
