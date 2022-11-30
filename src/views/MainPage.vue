@@ -55,7 +55,7 @@ export default {
     })
 
 // бургер:
-
+  /*
     let sideMenu = $('.side-menu');
     let menuButton = $('.menu-button');
     let menuButtonItem = $('.menu-button-item');
@@ -69,6 +69,8 @@ export default {
       }
     })
 
+   */
+
   }
 
 
@@ -76,5 +78,5 @@ export default {
 </script>
 
 <style scoped>
-
+@import "../assets/css/styles.css";
 </style>

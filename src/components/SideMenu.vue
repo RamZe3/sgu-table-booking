@@ -19,7 +19,6 @@ export default {
     let regBtn = $('.register-form-open-btn');
 
     $(document).on("click", function(e){
-      console.log(e.target);
       if(loginBtn.is(e.target)){
         document.querySelector('.side-menu__login-form').style.display = "flex";
         document.querySelector('.side-menu__login-form').style.flexDirection = "column";
@@ -84,6 +83,23 @@ export default {
     })
 
 // модал
+//     let tcloseBtn = $('.close-btn__time-popup');
+//     let tableBtn = $('.table');
+//     let tsubmitBtn = $('.submit-btn___time-popup');
+//     let tpopupBody = $('.popup-body__time-popup');
+//     let tpopup = $('.popup__time-popup');
+//
+//     $(document).on("click", function(e){
+//       if (tcloseBtn.is(e.target)) {
+//         tpopup.removeClass('_active');
+//       }
+//       if (tsubmitBtn.is(e.target) || (tpopupBody.is(e.target))) {
+//         tpopup.removeClass('_active');
+//       }
+//       if (tableBtn.is(e.target)) {
+//         tpopup.addClass('_active');
+//       }
+//     })
     let tcloseBtn = $('.close-btn__time-popup');
     let tableBtn = $('.table');
     let tsubmitBtn = $('.submit-btn___time-popup');

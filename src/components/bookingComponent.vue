@@ -75,22 +75,23 @@
     </div>
   </div>
 
-  <div id="admin-edit-popup" class="popup popup__admin-edit-popup">
-    <div class="popup-body popup-body__admin-edit-popup">
+  <div id="time-popup" class="popup popuptime-popup">
+    <div class="popup-body popup-bodytime-popup">
       <div class="popup-content">
-        <div class="popup-title">Выберите дату и время визита:</div>
+        <div class="popup-title">Выберите время визита:</div>
         <div class="input-form">
-          <input type="date" id="admin-date" class="input-form-date-value" min="2022-11-17" max="2022-12-31">
-          <input type="time" id="admin-time" class="input-form-time-value" min="09:00" max="21:00" required>
+          <input type="time" id="time" class="input-form-time-value" value="18:00" min="09:00" max="21:00" required>
         </div>
         <div class="popup-сontent-buttons">
-          <button id="close-btn" class="content-button close-btn close-btn__admin-edit-popup">Закрыть</button>
-          <button class="content-button submit-btn submit-btn___admin-edit-popup" type="submit">Подтвердить</button>
+          <button class="content-button close-btn close-btntime-popup">Закрыть</button>
+          <button class="content-button submit-btn submit-btn_time-popup" type="submit">Подтвердить</button>
         </div>
       </div>
     </div>
   </div>
+
 </template>
+
 
 <script>
 import $ from 'jquery'
@@ -135,47 +136,51 @@ export default {
       }
     })
 
+
+    //TODO раскоммнтироваь
 // бронь:
+//
+//     let table = $('.table');
+//     let tableId = 0;
+//
+//     $(document).on("click", function(e2){
+//       //console.log(e2.target)
+//       if (table.is(e2.target)) {
+//         tableId = e2.target.id;
+//         let element = document.getElementById(tableId);
+//         if (element.classList.contains("table__free")) {
+//           element.classList.add("table__occupied");
+//           element.classList.remove("table__free");
+//         }
+//       }
+//     })
 
-    let table = $('.table');
-    let tableId = 0;
-
-    $(document).on("click", function(e2){
-      if (table.is(e2.target)) {
-        tableId = e2.target.id;
-        let element = document.getElementById(tableId);
-        if (element.classList.contains("table__free")) {
-          element.classList.add("table__occupied");
-          element.classList.remove("table__free");
-        }
-      }
-    })
-
-// модал
-    let dcloseBtn = $('.close-btn__date-popup');
-    let dopenBtn = $('.date-popup-open-btn');
-    let dsubmitBtn = $('.submit-btn___date-popup');
-    let dpopupBody = $('.popup-body__date-popup');
-    let dpopup = $('.popup__date-popup');
-
-    $(document).on("click", function(e){
-      if (dcloseBtn.is(e.target)) {
-        dpopup.removeClass('_active');
-      }
-      if (dsubmitBtn.is(e.target) || (dpopupBody.is(e.target))) {
-        dpopup.removeClass('_active');
-      }
-      if (dopenBtn.is(e.target)) {
-        dpopup.addClass('_active');
-      }
-    })
 
 // модал
-    let tcloseBtn = $('.close-btn__time-popup');
+//     let dcloseBtn = $('.close-btn__date-popup');
+//     let dopenBtn = $('.date-popup-open-btn');
+//     let dsubmitBtn = $('.submit-btn___date-popup');
+//     let dpopupBody = $('.popup-body__date-popup');
+//     let dpopup = $('.popup__date-popup');
+//
+//     $(document).on("click", function(e){
+//       if (dcloseBtn.is(e.target)) {
+//         dpopup.removeClass('_active');
+//       }
+//       if (dsubmitBtn.is(e.target) || (dpopupBody.is(e.target))) {
+//         dpopup.removeClass('_active');
+//       }
+//       if (dopenBtn.is(e.target)) {
+//         dpopup.addClass('_active');
+//       }
+//     })
+
+// модал
+    let tcloseBtn = $('.close-btntime-popup');
     let tableBtn = $('.table');
-    let tsubmitBtn = $('.submit-btn___time-popup');
-    let tpopupBody = $('.popup-body__time-popup');
-    let tpopup = $('.popup__time-popup');
+    let tsubmitBtn = $('.submit-btn_time-popup');
+    let tpopupBody = $('.popup-bodytime-popup');
+    let tpopup = $('.popuptime-popup');
 
     $(document).on("click", function(e){
       if (tcloseBtn.is(e.target)) {
