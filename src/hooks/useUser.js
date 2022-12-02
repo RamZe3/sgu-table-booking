@@ -3,6 +3,7 @@ import {useStore} from "vuex";
 import {computed, onMounted, ref} from "vue";
 import {API_URL, USER_API_URL} from "@/common/API";
 import {newGuid} from "@/common/GuidLogic";
+import {validUser} from "@/common/validation";
 
 export function useUser() {
     const user = ref(
@@ -26,6 +27,7 @@ export function useUser() {
             localStorage.setItem("Login", response.data[0].login)
             store.commit("setIsAuth", true)
             store.commit("setLogin")
+            store.commit("setErrorMessage", null)
         } else {
             store.commit("setErrorMessage", "Неверно указан логин или пароль")
         }
@@ -33,8 +35,13 @@ export function useUser() {
     }
 
     const register = async () => {
-        const response = await axios.get(API_URL + USER_API_URL + '/?login=' + user.value.login);
+        const response = await axios.get(API_URL + USER_API_URL + '/?phone=' + user.value.phone);
         if (response.data.length === 0) {
+            const errors = validUser(user.value)
+            if (errors !== ''){
+                store.commit("setErrorMessage", errors)
+                return
+            }
             localStorage.setItem("userID", user.value.id)
             localStorage.setItem("Login", user.value.login)
             store.commit("setIsAuth", true)
@@ -47,8 +54,9 @@ export function useUser() {
             }
             await axios.post(API_URL + USER_API_URL + "/", newUser);
             localStorage.setItem("userID", newUser.id)
+            store.commit("setErrorMessage", null)
         } else {
-            store.commit("setErrorMessage", "Пользователь с этим логином уже существует")
+            store.commit("setErrorMessage", "Пользователь с номером телефона уже существует")
         }
         checkAdminRole()
     }
@@ -81,6 +89,11 @@ export function useUser() {
         return response.data[0]
     }
 
+    const getPhoneByID = async (phone) => {
+        const response = await axios.get(API_URL + USER_API_URL + '/?phone=' + phone);
+        return response.data[0]
+    }
+
     onMounted(checkAuth)
     onMounted(checkAdminRole)
     computed(checkAdminRole)
@@ -88,6 +101,6 @@ export function useUser() {
     return {
         register, login, signOut,
         checkAuth, checkAdminRole,
-        getLoginByID, user, isAdmin
+        getLoginByID, user, isAdmin, getPhoneByID
     }
 }

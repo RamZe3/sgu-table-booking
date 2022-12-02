@@ -49,19 +49,19 @@ export default {
 
 // бронь:
 
-    let table = $('.table');
-    let tableId = 0;
-
-    $(document).on("click", function(e2){
-      if (table.is(e2.target)) {
-        tableId = e2.target.id;
-        let element = document.getElementById(tableId);
-        if (element.classList.contains("table__free")) {
-          element.classList.add("table__occupied");
-          element.classList.remove("table__free");
-        }
-      }
-    })
+    //let table = $('.table');
+    //let tableId = 0;
+//
+    //$(document).on("click", function(e2){
+    //  if (table.is(e2.target)) {
+    //    tableId = e2.target.id;
+    //    let element = document.getElementById(tableId);
+    //    if (element.classList.contains("table__free")) {
+    //      element.classList.add("table__occupied");
+    //      element.classList.remove("table__free");
+    //    }
+    //  }
+    //})
 
 // модал
     let dcloseBtn = $('.close-btn__date-popup');
