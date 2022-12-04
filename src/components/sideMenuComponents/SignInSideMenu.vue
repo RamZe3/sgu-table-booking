@@ -26,7 +26,7 @@
                :value="user.phone" @input="event => user.phone = event.target.value">
         <input type="text" class="input-value input-value--password" placeholder="Пароль"
                :value="user.password" @input="event => user.password = event.target.value">
-        <input type="text" class="input-value input-value--password" placeholder="Подтвердите пароль">
+<!--        TODO<input type="text" class="input-value input-value&#45;&#45;password" placeholder="Подтвердите пароль">-->
       </div>
       <div class="side-menu__register-form-button-wrapper">
         <button class="create-account-btn-confirm" @click="register">Зарегистрироваться</button>

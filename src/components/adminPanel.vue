@@ -33,8 +33,11 @@
                   <div class="list-item-text client">{{ booking.login}}</div>
                   <div class="list-item-text phone">{{ booking.phone}}</div>
 <!--                  TODO не работает удаление-->
-                  <button class="list-item-btn list-item-btn__delete-btn admin-delete-popup-open-btn"
+                  <button v-if="!booking.isDeleted" class="list-item-btn list-item-btn__delete-btn admin-delete-popup-open-btn"
                   @click="deleteBooking(booking.id)">Удалить</button>
+
+                  <div style="text-align: center; text-decoration: line-through; background-color: #d10000; color: white" v-if="booking.isDeleted"
+                       class="list-item-btn list-item-btn__delete-btn admin-delete-popup-open-btn">Удалено</div>
                 </div>
 
                 <div v-if="bookingTables.length === 0">

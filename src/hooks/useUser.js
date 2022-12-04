@@ -32,10 +32,22 @@ export function useUser() {
             store.commit("setErrorMessage", "Неверно указан логин или пароль")
         }
         checkAdminRole()
+        user.value = {
+            id: '',
+            phone: '',
+            login: '',
+            password: '',
+        }
     }
 
     const register = async () => {
         const response = await axios.get(API_URL + USER_API_URL + '/?phone=' + user.value.phone);
+        const response2 = await axios.get(API_URL + USER_API_URL + '/?login=' + "admin");
+        if (response2.data.length !== 0) {
+            store.commit("setErrorMessage", "Админ уже зарегестрирован")
+            return
+        }
+
         if (response.data.length === 0) {
             const errors = validUser(user.value)
             if (errors !== ''){
@@ -59,6 +71,12 @@ export function useUser() {
             store.commit("setErrorMessage", "Пользователь с номером телефона уже существует")
         }
         checkAdminRole()
+        user.value = {
+            id: '',
+            phone: '',
+            login: '',
+            password: '',
+        }
     }
 
     const signOut = () => {

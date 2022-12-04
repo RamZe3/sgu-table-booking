@@ -107,10 +107,10 @@ export function useTableBooks() {
             axios.get(API_URL + BOOKING_API_URL + '/?bookingDate=' + currentDate.value.
             format("YYYY:MM:DD"));
 
-        console.log(response.data)
+
         for (let i = tables.value.length-1; i >= 0; i--){
             let findItem = response.data.find(item => item.tableId-1 === tables.value[i].id-1)
-            if (findItem !== undefined){
+            if (findItem !== undefined && findItem.isDeleted !== true){
                 tables.value[i].isBooked = true
             }
             else {
@@ -156,8 +156,9 @@ export function useTableBooks() {
 
     const deleteBooking = async (id) => {
         console.log(id)
-        //TODO json-server
-        //await axios.delete(API_URL + BOOKING_API_URL + '/' + id + "/");
+        let dbooking = bookingTables.value.find(item => item.id == id)
+        dbooking.isDeleted = true
+        await axios.put(API_URL + BOOKING_API_URL + '/' + id, dbooking);
 
         getBookingTables()
     }
