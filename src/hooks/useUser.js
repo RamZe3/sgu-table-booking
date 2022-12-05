@@ -41,9 +41,10 @@ export function useUser() {
     }
 
     const register = async () => {
+        //TODO
         const response = await axios.get(API_URL + USER_API_URL + '/?phone=' + user.value.phone);
         const response2 = await axios.get(API_URL + USER_API_URL + '/?login=' + "admin");
-        if (response2.data.length !== 0) {
+        if (response2.data.length !== 0 && user.value.login === "admin") {
             store.commit("setErrorMessage", "Админ уже зарегестрирован")
             return
         }

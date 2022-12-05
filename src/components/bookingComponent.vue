@@ -154,8 +154,8 @@
         <div class="popup-title">Выберите время визита:</div>
         <div class="input-form">
           <input type="time" id="time" class="input-form-time-value"
-                 :value="currentDate.format('mm:ss')"
-                 @input="event => updateCurrentDate(event.target.value, 'mm:ss')"
+                 :value="currentDate.format('HH:mm')"
+                 @input="event => updateCurrentDate(event.target.value, 'HH:mm')"
                  min="09:00" max="21:00" required>
         </div>
         <div class="popup-сontent-buttons">

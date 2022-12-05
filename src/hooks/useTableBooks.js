@@ -87,18 +87,17 @@ export function useTableBooks() {
     const bookingTables = ref([])
     const countOfBooking = ref(0)
 
-    const currentDate = ref(moment( moment().format('YYYY-MM-DD') + "10:00", 'YYYY-MM-DD'+"mm:ss"))
+    const currentDate = ref(moment( moment().format('YYYY-MM-DD') + "10:00", 'YYYY-MM-DD'+"HH:mm"))
     const maxDate = ref(moment().add(14,'days'))
     const minDate = ref(moment())
 
     const updateCurrentDate = (date, form) => {
         if (form === 'YYYY-MM-DD'){
-            currentDate.value = moment(date + "10:10", form+"mm:ss")
+            currentDate.value = moment(date + "10:00", form+"HH:mm")
         }
-        if (form === 'mm:ss'){
+        if (form === 'HH:mm'){
             currentDate.value = moment( currentDate.value.format('YYYY-MM-DD') + date, 'YYYY-MM-DD'+form)
         }
-        console.log(currentDate.value.format('mm:ss'))
     }
 
     //Для клиента
@@ -127,9 +126,10 @@ export function useTableBooks() {
             id: countOfBooking.value,
             tableId: id,
             userId: localStorage.getItem("userID"),
-            bookingTime: currentDate.value.format("hh:mm"),
+            bookingTime: currentDate.value.format("HH:mm"),
             bookingDate: currentDate.value.format("YYYY:MM:DD"),
         }
+        console.log(currentDate.value.format("H:m"))
         await axios.post(API_URL + BOOKING_API_URL + "/", newBooking);
 
     }
