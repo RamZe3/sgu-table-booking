@@ -5,6 +5,11 @@
 npm install
 ```
 
+### Compiles and hot-reloads for development with json-server
+```
+npm run develop
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
@@ -17,7 +22,7 @@ npm run build
 
 ### Lints and fixes files
 ```
-npm run lint
+npm run lint 
 ```
 
 ### Customize configuration

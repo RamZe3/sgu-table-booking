@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "id": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "login": "admin",
+      "password": "123",
+      "phone": "89379622032"
+    },
+    {
+      "id": "a295575b-bc35-4309-8c7e-12a334b3e157",
+      "login": "Паша",
+      "password": "123",
+      "phone": "+79329622111"
+    },
+    {
+      "id": "d2d7d372-fc90-4a8e-ac1f-94a39539c4f1",
+      "login": "testC",
+      "password": "123",
+      "phone": "89002221111"
+    }
+  ],
+  "booking": [
+    {
+      "tableId": "6",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "12:10",
+      "bookingDate": "2022:12:04",
+      "id": 1,
+      "phone": "+79379622032",
+      "login": "admin",
+      "isDeleted": true
+    },
+    {
+      "tableId": "7",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "12:10",
+      "bookingDate": "2022:12:04",
+      "id": 2,
+      "phone": "+79379622032",
+      "login": "admin",
+      "isDeleted": true
+    },
+    {
+      "tableId": "6",
+      "userId": "a295575b-bc35-4309-8c7e-12a334b3e157",
+      "bookingTime": "12:14",
+      "bookingDate": "2022:12:04",
+      "id": 3
+    },
+    {
+      "tableId": "6",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "12:14",
+      "bookingDate": "2022:12:05",
+      "id": 4,
+      "phone": "89379622032",
+      "login": "admin",
+      "isDeleted": true
+    },
+    {
+      "tableId": "7",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "12:10",
+      "bookingDate": "2022:12:05",
+      "id": 5,
+      "phone": "89379622032",
+      "login": "admin",
+      "isDeleted": true
+    },
+    {
+      "tableId": "8",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "12:15",
+      "bookingDate": "2022:12:05",
+      "id": 6,
+      "phone": "89379622032",
+      "login": "admin",
+      "isDeleted": true
+    },
+    {
+      "tableId": "9",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "0:22",
+      "bookingDate": "2022:12:05",
+      "id": 7
+    },
+    {
+      "tableId": "10",
+      "userId": "957db7e1-b2a7-4273-a36c-87842edc06c3",
+      "bookingTime": "0:13",
+      "bookingDate": "2022:12:05",
+      "id": 8
+    },
+    {
+      "tableId": "6",
+      "userId": "d2d7d372-fc90-4a8e-ac1f-94a39539c4f1",
+      "bookingTime": "10:00",
+      "bookingDate": "2022:12:07",
+      "id": 9
+    }
+  ]
+}
